@@ -3,9 +3,17 @@ import './index.css'
 function App() {
 
   return (
-    <>
-      <h1>Riding school simulator</h1>
-    </>
+      <div className="App">
+        <h1>Riding School Simulator</h1>
+        <h2>Balance: 1000€</h2>
+
+        <div>
+          <h3>Owned Horses:</h3>
+          <ul>
+              <li>Teppo</li>
+          </ul>
+        </div>
+      </div>
   )
 }
 
