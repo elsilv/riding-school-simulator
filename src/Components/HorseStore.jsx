@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { decreaseBalance } from '../store/balanceSlice';
+import { addHorse } from '../store/horseSlice';
 import '../index.css'
+
 
 const horseData = [
   { name: 'Teppo', age: 10, size: "163cm", character: "", price: 500 },
@@ -8,7 +12,9 @@ const horseData = [
   { name: 'Opa', age: 8, size: "172cm", character: "", price: 850 },
 ]
 
-const HorseStore = ({ balance, setBalance, horses, setHorses }) => {
+const HorseStore = () => {
+  const dispatch = useDispatch();
+  const balance = useSelector((state) => state.balance.amount);
   const [selectedHorse, setSelectedHorse] = useState(null);
 
   const buyHorse = () => {
@@ -19,8 +25,8 @@ const HorseStore = ({ balance, setBalance, horses, setHorses }) => {
       return;
     }
 
-    setBalance(balance - horsePrice);
-    setHorses([...horses, selectedHorse]);
+    dispatch(decreaseBalance(selectedHorse.price));
+    dispatch(addHorse(selectedHorse));
   };
 
   return (

@@ -2,10 +2,10 @@ import React from 'react';
 import HorseStore from '../components/HorseStore';
 import { Link } from 'react-router-dom';
 
-const HorseStorePage = ({ balance, setBalance, horses, setHorses }) => {
+const HorseStorePage = () => {
   return (
     <div>
-      <HorseStore balance={balance} setBalance={setBalance} horses={horses} setHorses={setHorses} />
+      <HorseStore />
       <Link to="/">Back to Home</Link>
     </div>
   );
