@@ -48,3 +48,34 @@ ul {
 li {
     margin: 5px 0;
  }
+
+ .horse-cards {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 20px;
+     justify-content: center;
+   }
+
+   .horse-card {
+     background-color: #f9f9f9;
+     border-radius: 10px;
+     width: 200px;
+     padding: 10px;
+     text-align: center;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     transition: transform 0.3s ease;
+   }
+
+   .horse-card:hover {
+     transform: scale(1.05);
+   }
+
+   .horse-image {
+     width: 100%;
+     height: auto;
+     border-radius: 10px;
+   }
+
+   .horse-details {
+     margin-top: 10px;
+   }
