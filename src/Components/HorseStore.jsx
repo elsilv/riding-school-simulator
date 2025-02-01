@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { decreaseBalance } from '../store/balanceSlice';
-import { addHorse } from '../store/horseSlice';
+import { addHorseAsync } from '../store/horseSlice';
 import '../index.css'
 
 
@@ -26,7 +26,7 @@ const HorseStore = () => {
     }
 
     dispatch(decreaseBalance(selectedHorse.price));
-    dispatch(addHorse(selectedHorse));
+    dispatch(addHorseAsync(selectedHorse));
   };
 
   return (
