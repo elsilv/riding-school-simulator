@@ -6,7 +6,6 @@ const HorseStorePage = () => {
   return (
     <div>
       <HorseStore />
-      <Link to="/">Back to Home</Link>
     </div>
   );
 };

@@ -15,55 +15,43 @@ const horseData = [
 const HorseStore = () => {
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.balance.amount);
-  const [selectedHorse, setSelectedHorse] = useState(null);
 
-  const buyHorse = () => {
-    if (!selectedHorse) return;
-    const horsePrice = selectedHorse.price;
+  const buyHorse = (horse) => {
+    const horsePrice = horse.price;
     if (balance < horsePrice) {
       alert('Not enough balance to buy this horse!');
       return;
     }
 
-    dispatch(decreaseBalance(selectedHorse.price));
-    dispatch(addHorseAsync(selectedHorse));
+    dispatch(decreaseBalance(horsePrice));
+    dispatch(addHorseAsync(horse));
   };
 
-  return (
-    <div>
-      <h2>Horse Store</h2>
-      <p>Your balance: ${balance}</p>
-
-      <div className="horse-cards">
-        {horseData.map((horse, idx) => (
-          <div key={idx} className="horse-card">
-            <img src={horse.image} alt={horse.name} className="horse-image" />
-            <div className="horse-details">
-              <h4>{horse.name}</h4>
-              <p>Age: {horse.age}</p>
-              <p>Size: {horse.size}</p>
-              <p>Character: {horse.character}</p>
-              <p>Price: ${horse.price}</p>
+    return (
+    <div className="browser-window">
+      <div className="browser-header">
+        <span>Horse Store - Riding School Simulator</span>
+      </div>
+      <div className="browser-body">
+        <div className="horse-store">
+          {horseData.length === 0 ? (
+            <p>No horses available in your store.</p>
+          ) : (
+            <div className="horse-cards">
+              {horseData.map((horse, idx) => (
+                <div className="horse-card" key={idx}>
+                  <img src={horse.image} alt={horse.name} className="horse-image" />
+                  <h4>{horse.name}</h4>
+                  <p><strong>Size:</strong> {horse.size}</p>
+                  <p><strong>Character:</strong> {horse.character}</p>
+                  <button className="buy-button" onClick={() => buyHorse(horse)}>Buy</button>
+                </div>
+              ))}
             </div>
-          </div>
-        ))}
+          )}
+        </div>
       </div>
-
-      <div>
-        <h3>Select a horse to buy:</h3>
-        <select onChange={(e) => setSelectedHorse(JSON.parse(e.target.value))}>
-          <option value="">Choose a horse</option>
-          {horseData.map((horse, idx) => (
-            <option key={idx} value={JSON.stringify(horse)}>
-              {horse.name} - ${horse.price}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <button onClick={buyHorse}>Buy Horse</button>
     </div>
   );
 };
-
 export default HorseStore;
