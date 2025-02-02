@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateBalance } from '../store/balanceSlice';
-import { addHorseAsync } from '../store/horseSlice';
 import '../index.css'
+import { addHorseAsync } from "../store/horseSlice.js";
 
 
 const horseData = [
@@ -15,14 +15,19 @@ const horseData = [
 const HorseStore = () => {
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.balance.amount);
+  const [notification, setNotification] = useState('');
 
   const buyHorse = (horse) => {
     const price = horse.price;
     if (balance >= price) {
       const newBalance = balance - price;
       dispatch(updateBalance(newBalance));
+      dispatch(addHorseAsync(horse));
+      setNotification(`Successfully bought ${horse.name}!`);
+      setTimeout(() => setNotification(''), 3000);
     } else {
-      alert("Not enough money!");
+       setNotification("Not enough money!");
+       setTimeout(() => setNotification(''), 3000);
     }
   };
 
@@ -32,6 +37,7 @@ const HorseStore = () => {
         <span>Horse Store - Riding School Simulator</span>
       </div>
       <div className="browser-body">
+        {notification && <div className="notification">{notification}</div>}
         <div className="horse-store">
           {horseData.length === 0 ? (
             <p>No horses available in your store.</p>
