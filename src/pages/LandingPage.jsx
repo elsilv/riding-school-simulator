@@ -1,13 +1,12 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import Balance from "../components/Balance.jsx";
 
-const LandingPage = ({ horses }) => {
-  const balance = useSelector((state) => state.balance.amount);
+const LandingPage = () => {
 
   return (
       <div>
       <h1>Riding School Simulator</h1>
-        <h2>Balance: ${balance}</h2>
+      <Balance />
       </div>
   );
 };

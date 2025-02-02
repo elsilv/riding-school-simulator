@@ -1,23 +1,43 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
+const BASE_URL = "http://localhost:8080/balance";
+
+export const fetchBalance = createAsyncThunk("balance/fetchBalance", async () => {
+  const response = await fetch(BASE_URL);
+  const data = await response.json();
+  console.log('Value: ', data)
+  return data;
+});
+
+export const updateBalance = createAsyncThunk("balance/updateBalance", async (newBalance) => {
+  const response = await fetch(BASE_URL, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ amount: newBalance }),
+  });
+  const data = await response.json();
+  return data.amount;
+});
 
 const initialState = {
-  amount: 10000,
+  amount: 0,
+  status: "idle",
+  error: null,
 };
 
 const balanceSlice = createSlice({
   name: 'balance',
   initialState,
-  reducers: {
-    increaseBalance: (state, action) => {
-      state.amount += action.payload;
-    },
-    decreaseBalance: (state, action) => {
-      if (state.amount >= action.payload) {
-        state.amount -= action.payload;
-      }
-    },
-  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBalance.fulfilled, (state, action) => {
+        state.amount = action.payload;
+      })
+      .addCase(updateBalance.fulfilled, (state, action) => {
+        state.amount = action.payload;
+      });
+  }
 });
 
-export const { increaseBalance, decreaseBalance } = balanceSlice.actions;
 export default balanceSlice.reducer;

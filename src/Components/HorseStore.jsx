@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { decreaseBalance } from '../store/balanceSlice';
+import { updateBalance } from '../store/balanceSlice';
 import { addHorseAsync } from '../store/horseSlice';
 import '../index.css'
 
@@ -17,14 +17,13 @@ const HorseStore = () => {
   const balance = useSelector((state) => state.balance.amount);
 
   const buyHorse = (horse) => {
-    const horsePrice = horse.price;
-    if (balance < horsePrice) {
-      alert('Not enough balance to buy this horse!');
-      return;
+    const price = horse.price;
+    if (balance >= price) {
+      const newBalance = balance - price;
+      dispatch(updateBalance(newBalance));
+    } else {
+      alert("Not enough money!");
     }
-
-    dispatch(decreaseBalance(horsePrice));
-    dispatch(addHorseAsync(horse));
   };
 
     return (
