@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage.jsx";
 import NavBar from "./components/Navbar.jsx";
 import HorsePage from "./pages/HorsePage.jsx";
 import Lessons from "./components/Lessons.jsx";
+import Bills from "./components/Bills.jsx";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/horse-store" element={<HorseStorePage />} />
           <Route path="/horses" element={<HorsePage />} />
           <Route path="/lessons" element={<Lessons />} />
+          <Route path="/bills" element={<Bills />} />
         </Routes>
       </Router>
   )
