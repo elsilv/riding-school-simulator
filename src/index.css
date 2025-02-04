@@ -5,6 +5,14 @@
   font-style: normal;
 }
 
+:root {
+  --main-bg-color: #caedf3;
+  --main-pink:#FFCBED;
+  --main-green: #BBDFC2;
+  --main-yellow: #FBF3CA;
+  --main-text-color: black;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +22,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #caedf3;
+    background-color: var(--main-bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,13 +31,14 @@ body {
   }
 
 h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 20px;
   }
 
 h2 {
     font-size: 1.5rem;
     margin-bottom: 20px;
+    color: var(--main-text-color);
   }
 
 h3 {
@@ -54,28 +63,8 @@ li {
      justify-content: center;
    }
 
-   .horse-card {
-     background-color: #f9f9f9;
-     border-radius: 10px;
-     width: 200px;
-     padding: 10px;
-     text-align: center;
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-     transition: transform 0.3s ease;
-   }
-
    .horse-card:hover {
      transform: scale(1.05);
-   }
-
-   .horse-image {
-     width: 100%;
-     height: auto;
-     border-radius: 10px;
-   }
-
-   .horse-details {
-     margin-top: 10px;
    }
 
    .sidebar {
@@ -84,14 +73,16 @@ li {
        top: 0;
        width: 200px;
        height: 100vh;
-       background-color: #333;
-       color: white;
-       padding: 20px;
+       background-color: rgba(255,255,255,0.8);
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+       display: flex;
+       flex-direction: column;
+       align-items: center;
      }
 
      .sidebar h2 {
-       font-size: 18px;
-       margin-bottom: 20px;
+       font-size: 20px;
+       margin-bottom: 10px;
      }
 
      .sidebar ul {
@@ -100,23 +91,20 @@ li {
      }
 
      .sidebar ul li {
-       margin: 15px 0;
+       margin: 5px;
      }
 
      .sidebar ul li a {
-       color: white;
+       color: var(--main-text-color);
        text-decoration: none;
        font-size: 16px;
-       display: flex;
-       align-items: center;
-       gap: 8px;
-       padding: 8px;
+       display: block;
+       padding: 8px 20px;
        transition: background 0.2s;
      }
 
      .sidebar ul li a:hover {
-       background: rgba(255, 255, 255, 0.2);
-       border-radius: 5px;
+       background: var(--main-yellow);
      }
 
      .browser-window {
@@ -130,9 +118,9 @@ li {
        }
 
        .browser-header {
-         background-color: #4CAF50;
+         background-color: var(--main-green);
          padding: 10px;
-         color: white;
+         color: var(--main-text-color);
          font-size: 16px;
          text-align: center;
        }
@@ -179,8 +167,8 @@ li {
        }
 
        .buy-button {
-         background-color: #4CAF50;
-         color: white;
+         background-color: var(--main-green);
+         color: var(--main-text-color);
          border: none;
          padding: 10px;
          border-radius: 5px;
