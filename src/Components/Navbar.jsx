@@ -5,7 +5,8 @@ import '../index.css';
 const NavBar = () => {
   return (
     <nav className="sidebar">
-      <h2><img src={"/images/icons8.png"} alt="horse icon" /> Riding School</h2>
+      <img src={"/images/icons8.png"} alt="horse icon" /> 
+      <h2>Riding School</h2>
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/horses">Horses</Link></li>

@@ -1,27 +1,25 @@
+@font-face {
+  font-family: 'Afacad_Flux';
+  src: url('fonts/Afacad_Flux/AfacadFlux-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Afacad_Flux', sans-serif;
   }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: #caedf3;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     color: #333;
-  }
-
-.App {
-    text-align: center;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
   }
 
 h1 {
@@ -194,4 +192,38 @@ li {
 
        .buy-button:hover {
          background-color: #45a049;
+       }
+
+       .container {
+         display: grid;
+         grid-template-columns: 1fr 1fr 1fr;
+         grid-gap: 60px 0;
+         border: 1px solid #1E0F03;
+         padding: 0 30px 0 30px;
+         background-color: #D6DBD2;
+       }
+
+       .card:nth-child(odd) {
+         grid-row: 1;
+         border: 1px solid #1E0F03;
+         padding: 10px;
+         cursor: pointer;
+         text-align: center;
+         background-color: #F2F5EA;
+       }
+
+       .card:nth-child(even) {
+         grid-row: 2;
+         border: 1px solid #1E0F03;
+         padding: 10px;
+         cursor: pointer;
+         text-align: center;
+         background-color: #F2F5EA;
+       }
+
+       .card img {
+         width: 50px;
+         height: 50px;
+         border-radius: 10px;
+         object-fit: cover;
        }
