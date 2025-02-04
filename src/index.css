@@ -215,3 +215,50 @@ li {
          border-radius: 10px;
          object-fit: cover;
        }
+
+       .bills-table {
+         width: 100%;
+         border-collapse: collapse;
+         margin-top: 20px;
+         font-family: 'Afacad_Flux', sans-serif;
+         background: rgba(255, 255, 255, 0.5);
+         backdrop-filter: blur(10px);
+         border-radius: 12px;
+         overflow: hidden;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+       }
+
+       .bills-table th, .bills-table td {
+         border: 1px solid rgba(255, 255, 255, 0.5);
+         padding: 12px;
+         text-align: left;
+         color: #333;
+       }
+
+       .bills-table th {
+         background: rgba(255, 255, 255, 0.6);
+         font-weight: bold;
+       }
+
+       .bills-table tr:nth-child(even) {
+         background: rgba(255, 255, 255, 0.3);
+       }
+
+       .bills-table tr:hover {
+         background: rgba(202, 237, 243, 0.4);
+       }
+
+       .mark-paid-btn {
+         background: #4CAF50;
+         color: white;
+         border: none;
+         padding: 5px 10px;
+         border-radius: 5px;
+         cursor: pointer;
+         font-size: 14px;
+         transition: background 0.2s;
+       }
+
+       .mark-paid-btn:hover {
+         background: #45A049;
+       }

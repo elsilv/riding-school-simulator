@@ -16,22 +16,48 @@ function Bills () {
     }
   }, [status, dispatch]);
 
-  return (
-    <div>
-      <h3>Unpaid Bills</h3>
-      <ul>
-        {unpaidBills.map((bill, idx) => (
-          <li key={idx}>{bill.description} - {bill.amount} - {bill.due_date}</li>
-        ))}
-      </ul>
+  function formatDateTime(dateTime) {
+    const date = new Date(dateTime);
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+    };
 
-      <h3>All Bills</h3>
-      <ul>
-        {bills.map((bill, idx) => (
-          <li key={idx}>{bill.description} - {bill.amount} - {bill.due_date}</li>
-        ))}
-      </ul>
-    </div>
+    return date.toLocaleString('en-GB', options);
+  }
+
+  return (
+    <>
+      <h2>Bills</h2>
+      <table className="bills-table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Amount (€)</th>
+            <th>Due Date</th>
+            <th>Paid</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {bills.map((bill, idx) => (
+            <tr>
+              <td>{bill.description}</td>
+              <td>{bill.amount}</td>
+              <td>{formatDateTime(bill.due_date)}</td>
+              <td>{bill.paid.toString()}</td>
+              {bill.paid === false && (
+              <td><button className="mark-paid-btn">Pay</button></td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }
 
