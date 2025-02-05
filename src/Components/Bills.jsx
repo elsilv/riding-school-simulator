@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { fetchBills, fetchUnpaidBills } from "../store/billsSlice.js";
+import { fetchBills, fetchUnpaidBills, payBill } from "../store/billsSlice.js";
 
 function Bills () {
   const dispatch = useDispatch();
@@ -28,6 +28,14 @@ function Bills () {
     return date.toLocaleString('en-GB', options);
   }
 
+  const handlePayBill = (billId) => {
+    dispatch(payBill(billId))
+    .then(() => {
+      dispatch(fetchBills());
+      dispatch(fetchUnpaidBills());
+    });
+  };
+
   return (
     <>
       <h2>Bills</h2>
@@ -47,9 +55,9 @@ function Bills () {
               <td>{bill.description}</td>
               <td>{bill.amount}</td>
               <td>{formatDateTime(bill.due_date)}</td>
-              <td>{bill.paid.toString()}</td>
+              <td>{bill.paid ? 'Paid' : 'Unpaid'}</td>
               {bill.paid === false && (
-              <td><button className="mark-paid-btn">Pay</button></td>
+              <td><button onClick={() => handlePayBill(bill.id)}>Pay bill</button></td>
               )}
             </tr>
           ))}

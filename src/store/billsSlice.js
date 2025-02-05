@@ -17,6 +17,14 @@ export const fetchUnpaidBills = createAsyncThunk(
     }
   );
 
+export const payBill = createAsyncThunk(
+  'bills/payBill',
+  async (billId) => {
+    const response = await axios.put(`http://localhost:8080/bills/${billId}/pay`);
+    return response.data;
+  }
+);
+
 const initialState = {
   bills: [],
   unpaidBills: [],
@@ -36,6 +44,13 @@ const billsSlice = createSlice({
       .addCase(fetchUnpaidBills.fulfilled, (state, action) => {
           state.unpaidBills = action.payload;
         })
+      .addCase(payBill.fulfilled, (state, action) => {
+        const updatedBill = action.payload;
+        const index = state.bills.findIndex((bill) => bill.id === updatedBill.id);
+        if (index !== -1) {
+          state.bills[index] = updatedBill;
+        }
+      })
   },
 });
 
