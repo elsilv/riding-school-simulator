@@ -182,9 +182,15 @@ li {
          background-color: #45a049;
        }
 
+       .main-container {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 20px;
+       }
+
        .container {
          display: grid;
-         grid-template-columns: 1fr 1fr 1fr;
+         grid-template-columns: repeat(3, 1fr);
          grid-gap: 60px 0;
          border: 1px solid #1E0F03;
          padding: 0 30px 0 30px;
@@ -194,7 +200,7 @@ li {
        .card:nth-child(odd) {
          grid-row: 1;
          border: 1px solid #1E0F03;
-         padding: 10px;
+         padding: 20px;
          cursor: pointer;
          text-align: center;
          background-color: #F2F5EA;
@@ -203,7 +209,7 @@ li {
        .card:nth-child(even) {
          grid-row: 2;
          border: 1px solid #1E0F03;
-         padding: 10px;
+         padding: 20px;
          cursor: pointer;
          text-align: center;
          background-color: #F2F5EA;
@@ -214,6 +220,35 @@ li {
          height: 50px;
          border-radius: 10px;
          object-fit: cover;
+       }
+
+       .details-card {
+         flex: 1 1 35%;
+         padding: 20px;
+         text-align: center;
+         background-color: #F2F5EA;
+         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+         border-radius: 10px;
+         max-width: 350px;
+         height: 400px;
+       }
+
+       .details-card img {
+         width: 80%;
+         max-width: 200px;
+         height: auto;
+         border-radius: 10px;
+         margin-bottom: 10px;
+       }
+
+       @media (max-width: 768px) {
+         .main-container {
+           flex-direction: column;
+         }
+
+         .details-card {
+           flex: 1 1 100%;
+         }
        }
 
        .bills-table {

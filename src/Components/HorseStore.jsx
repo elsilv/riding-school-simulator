@@ -6,10 +6,10 @@ import { addHorseAsync } from "../store/horseSlice.js";
 
 
 const horseData = [
-  { name: 'Teppo', age: 10, size: "163cm", character: "", price: 500 },
-  { name: 'Pampula', age: 15, size: "105cm", character: "", price: 400 },
-  { name: 'Sikke', age: 14, size: "142cm", character: "", price: 600 },
-  { name: 'Opa', age: 8, size: "172cm", character: "", price: 850 },
+  { name: 'Teppo', age: 10, size: "163cm", character: "", price: 500, image: "/images/teppo.jpg" },
+  { name: 'Pampula', age: 15, size: "105cm", character: "", price: 400, image: "/images/pampula.jpg" },
+  { name: 'Sikke', age: 14, size: "142cm", character: "", price: 600, image: "/images/sikke.jpg" },
+  { name: 'Opa', age: 8, size: "172cm", character: "", price: 850, image: "/images/opa.jpg" },
 ]
 
 const HorseStore = () => {
