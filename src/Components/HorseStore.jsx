@@ -49,7 +49,7 @@ const HorseStore = () => {
                   <h4>{horse.name}</h4>
                   <p><strong>Size:</strong> {horse.size}</p>
                   <p><strong>Character:</strong> {horse.character}</p>
-                  <button className="buy-button" onClick={() => buyHorse(horse)}>Buy</button>
+                  <button className="buy-button" onClick={() => buyHorse(horse)}>Buy {horse.price}</button>
                 </div>
               ))}
             </div>
