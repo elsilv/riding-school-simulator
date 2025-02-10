@@ -10,7 +10,7 @@ export const fetchHorses = createAsyncThunk(
 );
 
 export const buyHorseAsync = createAsyncThunk(
-  'horses/addHorseAsync',
+  'horses/buyHorseAsync',
   async (horseData) => {
     const response = await axios.post('http://localhost:8080/horses', horseData);
     return response.data;
