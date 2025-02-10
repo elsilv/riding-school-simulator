@@ -16,12 +16,13 @@ const HorseStore = () => {
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.balance.amount);
   const [notification, setNotification] = useState('');
+  const userId = 3;
 
   const buyHorse = (horse) => {
     const price = horse.price;
     if (balance >= price) {
       const newBalance = balance - price;
-      dispatch(updateBalance(newBalance));
+      dispatch(updateBalance({userId, newBalance}));
       dispatch(addHorseAsync(horse));
       setNotification(`Successfully bought ${horse.name}!`);
       setTimeout(() => setNotification(''), 3000);
