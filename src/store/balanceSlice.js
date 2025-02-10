@@ -2,12 +2,13 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const BASE_URL = "http://localhost:8080/balance";
 
-export const fetchBalance = createAsyncThunk("balance/fetchBalance", async () => {
-  const response = await fetch(BASE_URL);
-  const data = await response.json();
-  console.log('Value: ', data)
-  return data;
-});
+export const fetchBalance = createAsyncThunk('balance/fetchBalance',
+  async (userId) => {
+    const response = await fetch (`http://localhost:8080/balance/${userId}`);
+    const data = await response.json();
+    console.log('Value: ', data.amount)
+    return data;
+  });
 
 export const updateBalance = createAsyncThunk("balance/updateBalance", async (newBalance) => {
   const response = await fetch(BASE_URL, {
@@ -32,7 +33,7 @@ const balanceSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchBalance.fulfilled, (state, action) => {
-        state.amount = action.payload;
+        state.amount = action.payload.amount;
       })
       .addCase(updateBalance.fulfilled, (state, action) => {
         state.amount = action.payload;

@@ -10,7 +10,9 @@ const Balance = () => {
   console.log(balance)
 
   useEffect(() => {
-    dispatch(fetchBalance());
+    //Just for testing
+    const userId = 3;
+    dispatch(fetchBalance(userId));
   }, [dispatch]);
 
   return (
