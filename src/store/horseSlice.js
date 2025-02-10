@@ -9,7 +9,7 @@ export const fetchHorses = createAsyncThunk(
   }
 );
 
-export const addHorseAsync = createAsyncThunk(
+export const buyHorseAsync = createAsyncThunk(
   'horses/addHorseAsync',
   async (horseData) => {
     const response = await axios.post('http://localhost:8080/horses', horseData);
@@ -40,7 +40,7 @@ const horseSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
       })
-      .addCase(addHorseAsync.fulfilled, (state, action) => {
+      .addCase(buyHorseAsync.fulfilled, (state, action) => {
         state.ownedHorses.push(action.payload);
       });
   },

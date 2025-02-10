@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../index.css'
-import { addHorseAsync, fetchHorses } from "../store/horseSlice.js";
+import { buyHorseAsync, fetchHorses } from "../store/horseSlice.js";
 
 const Horses = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Horses = () => {
 
   const handleAddHorse = async () => {
     const newHorse = { name: 'New Horse', size: 'Large', character: 'Friendly' };
-    await dispatch(addHorseAsync(newHorse));
+    await dispatch(buyHorseAsync(newHorse));
   };
 
   if (status === 'loading') {

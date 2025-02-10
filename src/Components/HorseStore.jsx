@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateBalance } from '../store/balanceSlice';
 import '../index.css'
-import { addHorseAsync } from "../store/horseSlice.js";
+import { buyHorseAsync } from "../store/horseSlice.js";
 
 
 const horseData = [
@@ -23,7 +23,7 @@ const HorseStore = () => {
     if (balance >= price) {
       const newBalance = balance - price;
       dispatch(updateBalance({userId, newBalance}));
-      dispatch(addHorseAsync(horse));
+      dispatch(buyHorseAsync(horse));
       setNotification(`Successfully bought ${horse.name}!`);
       setTimeout(() => setNotification(''), 3000);
     } else {
