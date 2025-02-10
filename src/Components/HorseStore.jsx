@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateBalance } from '../store/balanceSlice';
 import '../index.css'
-import {buyHorseAsync, fetchHorses} from "../store/horseSlice.js";
+import { buyHorseAsync, fetchAvailableHorses } from "../store/horseSlice.js";
 
 const HorseStore = () => {
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.balance.amount);
-  const horses = useSelector((state) => state.horses.ownedHorses);
+  const horses = useSelector((state) => state.horses.availableHorses);
   const [notification, setNotification] = useState('');
   const userId = 3;
 
   useEffect(() => {
-    dispatch(fetchHorses());
+    dispatch(fetchAvailableHorses());
   }, [dispatch]);
 
   const buyHorse = (horse) => {

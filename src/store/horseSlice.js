@@ -9,6 +9,14 @@ export const fetchHorses = createAsyncThunk(
   }
 );
 
+export const fetchAvailableHorses = createAsyncThunk(
+  'horses/fetchAvailableHorses',
+  async () => {
+    const response = await axios.get('http://localhost:8080/horses/available');
+    return response.data;
+  }
+);
+
 export const buyHorseAsync = createAsyncThunk(
   'horses/buyHorseAsync',
   async ({ userId, horseData }) => {
@@ -27,6 +35,7 @@ export const buyHorseAsync = createAsyncThunk(
 
 const initialState = {
   ownedHorses: [],
+  availableHorses: [],
   status: 'idle',
   error: null,
 };
@@ -50,6 +59,10 @@ const horseSlice = createSlice({
       })
       .addCase(buyHorseAsync.fulfilled, (state, action) => {
         state.ownedHorses.push(action.payload);
+      })
+      .addCase(fetchAvailableHorses.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.availableHorses = action.payload;
       });
   },
 });
