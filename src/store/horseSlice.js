@@ -11,8 +11,16 @@ export const fetchHorses = createAsyncThunk(
 
 export const buyHorseAsync = createAsyncThunk(
   'horses/buyHorseAsync',
-  async (horseData) => {
-    const response = await axios.post('http://localhost:8080/horses', horseData);
+  async ({ userId, horseData }) => {
+    const response = await axios.post(
+      `http://localhost:8080/users/${userId}/buy-horse`,
+      JSON.stringify(horseData),
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     return response.data;
   }
 );

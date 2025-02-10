@@ -20,7 +20,7 @@ const HorseStore = () => {
     if (balance >= price) {
       const newBalance = balance - price;
       dispatch(updateBalance({userId, newBalance}));
-      dispatch(buyHorseAsync({ ...horse, ownerId: userId }));
+      dispatch(buyHorseAsync({ userId, horseData: horse }));
       setNotification(`Successfully bought ${horse.name}!`);
       setTimeout(() => setNotification(''), 3000);
     } else {
