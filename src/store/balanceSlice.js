@@ -10,15 +10,16 @@ export const fetchBalance = createAsyncThunk('balance/fetchBalance',
     return data;
   });
 
-export const updateBalance = createAsyncThunk("balance/updateBalance", async (newBalance) => {
-  const response = await fetch(BASE_URL, {
+export const updateBalance = createAsyncThunk("balance/updateBalance",
+  async ({userId, newBalance}) => {
+    const response = await fetch(`http://localhost:8080/balance/${userId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ amount: newBalance }),
-  });
-  const data = await response.json();
-  return data.amount;
-});
+    });
+    const data = await response.json();
+    return data.amount;
+    });
 
 const initialState = {
   amount: 0,
