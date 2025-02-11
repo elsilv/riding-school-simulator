@@ -3,16 +3,16 @@ import axios from 'axios';
 
 export const fetchBills = createAsyncThunk(
   'bills/fetchBills',
-  async () => {
-    const response = await axios.get('http://localhost:8080/bills');
+  async (userId) => {
+    const response = await axios.get(`http://localhost:8080/bills/${userId}`);
     return response.data;
   }
 );
 
 export const fetchUnpaidBills = createAsyncThunk(
     'bills/fetchUnpaidBills',
-    async () => {
-      const response = await axios.get('http://localhost:8080/bills/unpaid');
+    async (userId) => {
+      const response = await axios.get(`http://localhost:8080/bills/${userId}/unpaid`);
       return response.data;
     }
   );

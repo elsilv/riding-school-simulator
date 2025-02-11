@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBills, fetchUnpaidBills, payBill } from "../store/billsSlice.js";
+import { USER_ID_DEVELOPMENT } from "../config/appConfig.js";
 
 function Bills () {
   const dispatch = useDispatch();
@@ -11,8 +12,8 @@ function Bills () {
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(fetchBills());
-      dispatch(fetchUnpaidBills());
+      dispatch(fetchBills(USER_ID_DEVELOPMENT));
+      dispatch(fetchUnpaidBills(USER_ID_DEVELOPMENT));
     }
   }, [status, dispatch]);
 
