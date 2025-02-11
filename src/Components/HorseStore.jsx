@@ -13,7 +13,7 @@ const HorseStore = () => {
 
   useEffect(() => {
     dispatch(fetchAvailableHorses());
-  }, [dispatch]);
+  }, [dispatch, horses]);
 
   const buyHorse = (horse) => {
     const price = horse.price;
