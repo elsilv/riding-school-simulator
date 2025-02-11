@@ -18,11 +18,6 @@ const Horses = () => {
     }
   }, [status, dispatch]);
 
-  const handleAddHorse = async () => {
-    const newHorse = { name: 'New Horse', size: 'Large', character: 'Friendly' };
-    await dispatch(buyHorseAsync(newHorse));
-  };
-
   if (status === 'loading') {
     return <p>Loading horses...</p>;
   }
