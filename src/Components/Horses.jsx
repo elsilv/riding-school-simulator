@@ -1,34 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../index.css'
-import { buyHorseAsync, fetchHorses } from "../store/horseSlice.js";
+import { fetchHorses } from "../store/horseSlice.js";
+import { buyStall } from "../store/userSlice.js";
 
 const Horses = () => {
   const dispatch = useDispatch();
   const horses = useSelector((state) => state.horses.ownedHorses);
-  const status = useSelector((state) => state.horses.status);
+  const horseStatus = useSelector((state) => state.horses.status);
   const error = useSelector((state) => state.horses.error);
+  const stallLimit = useSelector((state) => state.user.stallLimit);
 
   const [selectedHorse, setSelectedHorse] = useState(null);
   const [stableSize, setStableSize] = useState(6);
+  const userId = 3;
 
   useEffect(() => {
-    if (status !== 'loading' && status !== 'succeeded') {
+    if (horseStatus !== 'loading' && horseStatus !== 'succeeded') {
       dispatch(fetchHorses());
     }
-  }, [status, dispatch]);
+  }, [horseStatus, dispatch]);
 
-  if (status === 'loading') {
+  useEffect(() => {
+    setStableSize(stallLimit);
+  }, [stallLimit]);
+
+  const handleBuyNewStall = () => {
+    dispatch(buyStall(userId));
+  };
+
+  if (horseStatus === 'loading') {
     return <p>Loading horses...</p>;
   }
 
-  if (status === 'failed') {
+  if (horseStatus === 'failed') {
     return <p>Error: {error}</p>;
   }
 
   return (
     <div>
       <h2>Stall View</h2>
+      <button onClick={handleBuyNewStall}>Buy New Stall 500€</button>
       <div className="main-container">
         <div className="container">
           {horses.map((horse) => (
