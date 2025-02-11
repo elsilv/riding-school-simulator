@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../index.css'
 import { fetchHorses } from "../store/horseSlice.js";
 import { buyStall } from "../store/userSlice.js";
+import { STABLE_SIZE, USER_ID_DEVELOPMENT } from "../config/appConfig.js";
 
 const Horses = () => {
   const dispatch = useDispatch();
@@ -12,8 +13,7 @@ const Horses = () => {
   const stallLimit = useSelector((state) => state.user.stallLimit);
 
   const [selectedHorse, setSelectedHorse] = useState(null);
-  const [stableSize, setStableSize] = useState(6);
-  const userId = 3;
+  const [stableSize, setStableSize] = useState(STABLE_SIZE);
 
   useEffect(() => {
     if (horseStatus !== 'loading' && horseStatus !== 'succeeded') {
@@ -26,7 +26,7 @@ const Horses = () => {
   }, [stallLimit]);
 
   const handleBuyNewStall = () => {
-    dispatch(buyStall(userId));
+    dispatch(buyStall(USER_ID_DEVELOPMENT));
   };
 
   if (horseStatus === 'loading') {

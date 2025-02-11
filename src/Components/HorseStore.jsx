@@ -3,13 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateBalance } from '../store/balanceSlice';
 import '../index.css'
 import { buyHorseAsync, fetchAvailableHorses } from "../store/horseSlice.js";
+import { USER_ID_DEVELOPMENT } from "../config/appConfig.js";
 
 const HorseStore = () => {
   const dispatch = useDispatch();
   const balance = useSelector((state) => state.balance.amount);
   const horses = useSelector((state) => state.horses.availableHorses);
   const [notification, setNotification] = useState('');
-  const userId = 3;
+  const userId =  USER_ID_DEVELOPMENT;
 
   useEffect(() => {
     dispatch(fetchAvailableHorses());

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import '../index.css';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBalance } from "../store/balanceSlice.js";
+import { USER_ID_DEVELOPMENT } from "../config/appConfig.js";
 
 const Balance = () => {
   const dispatch = useDispatch();
@@ -10,9 +11,7 @@ const Balance = () => {
   console.log(balance)
 
   useEffect(() => {
-    //Just for testing
-    const userId = 3;
-    dispatch(fetchBalance(userId));
+    dispatch(fetchBalance(USER_ID_DEVELOPMENT));
   }, [dispatch]);
 
   return (
