@@ -13,7 +13,7 @@ const Horses = () => {
   const [stableSize, setStableSize] = useState(6);
 
   useEffect(() => {
-    if (status === 'idle') {
+    if (status !== 'loading' && status !== 'succeeded') {
       dispatch(fetchHorses());
     }
   }, [status, dispatch]);
