@@ -1,14 +1,15 @@
-import React from 'react';
-import Balance from "../components/Balance.jsx";
+import '../index.css'
 
-const LandingPage = () => {
-
-  return (
-      <div>
-      <h1>Riding School Simulator</h1>
-      <Balance />
+export default function LandingPage() {
+    return (
+      <div className="landing-container">
+        <div className="hero-section">
+          <div className="hero-content">
+            <h1 className="hero-title">Nordvale Stables</h1>
+            <p className="hero-subtitle">Manage your own riding school, train horses, and grow your business!</p>
+            <button className="hero-button">Start Your Journey</button>
+          </div>
+        </div>
       </div>
-  );
-};
-
-export default LandingPage;
+    );
+  }
