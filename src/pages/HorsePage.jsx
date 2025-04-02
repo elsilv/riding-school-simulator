@@ -3,7 +3,7 @@ import Horses from '../components/Horses';
 
 const HorsePage = () => {
   return (
-    <div>
+    <div className="hero-section-page">
       <Horses />
     </div>
   );
