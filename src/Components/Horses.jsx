@@ -38,9 +38,19 @@ const Horses = () => {
   }
 
   return (
-    <div>
-      <h2>Stall View</h2>
-      <button onClick={handleBuyNewStall}>Buy New Stall 500€</button>
+    <div className="stable-view">
+      <h1>Stable Overview: Manage Your Horses</h1>
+      <h3>Check in on your horses, care for them, and keep them happy!</h3>
+
+      <div className="button-container">
+        <button onClick={handleBuyNewStall}>Buy New Stall 500€</button>
+        <button>🥕 Feed All Horses </button>
+        <button>🧼 Clean Stable</button>
+        <button>🧼 Groom Horses</button>
+        <button>🏥 Call the Vet</button>
+        <button>🏇 Train Horses </button>
+      </div>
+
       <div className="main-container">
         <div className="container">
           {horses.map((horse) => (
@@ -59,14 +69,38 @@ const Horses = () => {
 
         {selectedHorse && (
           <div className="details-card">
-            <h2>{selectedHorse.name}</h2>
             <img
               src={`/images/${selectedHorse.name.charAt(0).toLowerCase() + selectedHorse.name.slice(1)}.jpg`}
               alt="horse picture"
             />
-            <p>Size: {selectedHorse.size}</p>
-            <p>Character: {selectedHorse.character}</p>
+            <div className="details-card-content">
+              <h2>{selectedHorse.name}</h2>
+              <p>Size: {selectedHorse.size}</p>
+              <p>Character: {selectedHorse.character}</p>
+
+              <div className="progress-bar-container">
+                <div className="progress-label">
+                  <span>Happiness:</span>
+                  <div className="progress-bar">
+                    <div className="progress-fill" style={{ width: "90%" }}></div>
+                  </div>
+                </div>
+                <div className="progress-label">
+                  <span>Tiredness:</span>
+                  <div className="progress-bar">
+                    <div className="progress-fill" style={{ width: "80%" }}></div>
+                  </div>
+                </div>
+                <div className="progress-label">
+                  <span>Hunger:</span>
+                  <div className="progress-bar">
+                    <div className="progress-fill" style={{ width: "40%" }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
         )}
       </div>
     </div>
