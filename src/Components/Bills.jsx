@@ -38,7 +38,7 @@ function Bills () {
   };
 
   return (
-    <>
+   <div className="page-container">
       <h2>Bills</h2>
       <table className="bills-table">
         <thead>
@@ -64,7 +64,7 @@ function Bills () {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
 

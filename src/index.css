@@ -51,6 +51,20 @@ li {
     margin: 5px 0;
  }
 
+ button {
+    background-color: #eae2d5;
+    padding: 0.25rem 1.5rem;
+    margin: 2px;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+ }
+
+ button:hover {
+    background-color:bisque;
+    cursor: pointer;
+ }
+
  .horse-cards {
      display: flex;
      flex-wrap: wrap;
@@ -108,7 +122,7 @@ li {
      }
 
      .browser-window {
-         width: 100%;
+         width: 80%;
          margin: auto;
          border: 1px solid #ccc;
          border-radius: 8px;
@@ -118,7 +132,7 @@ li {
        }
 
        .browser-header {
-         background-color: var(--main-green);
+         background-color: #eae2d5;
          padding: 10px;
          color: var(--main-text-color);
          font-size: 16px;
@@ -166,22 +180,6 @@ li {
          font-size: 14px;
        }
 
-       .buy-button {
-         background-color: var(--main-green);
-         color: var(--main-text-color);
-         border: none;
-         padding: 10px;
-         border-radius: 5px;
-         cursor: pointer;
-         margin-top: 10px;
-         width: 100%;
-         font-size: 14px;
-       }
-
-       .buy-button:hover {
-         background-color: #45a049;
-       }
-
        .stable-view {
          text-align: center;
          position: relative;
@@ -195,20 +193,6 @@ li {
          h3 {
            padding-bottom: 30px;
          }
-
-         button {
-             background-color: #eae2d5;
-             padding: 0.25rem 1.5rem;
-             margin: 2px;
-             border-radius: 0.75rem;
-             font-size: 1.1rem;
-             transition: background 0.3s;
-         }
-
-         button:hover {
-           background-color:bisque;
-           cursor: pointer;
-        }
        }
 
        .main-container {
@@ -323,10 +307,17 @@ li {
          }
        }
 
+       .page-container {
+         text-align: center;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         padding-top: 20vh;
+       }
+
        .bills-table {
-         width: 100%;
+         width: 80%;
          border-collapse: collapse;
-         margin-top: 20px;
          font-family: 'Afacad_Flux', sans-serif;
          background: rgba(255, 255, 255, 0.5);
          backdrop-filter: blur(10px);

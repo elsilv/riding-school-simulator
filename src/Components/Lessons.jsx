@@ -15,7 +15,7 @@ function Lessons({ giveLesson }) {
   }, [status, dispatch]);
 
   return (
-    <div>
+    <div className="page-container">
       <h3>Give Riding Lessons</h3>
       <ul>
         {lessons.map((lesson, idx) => (

@@ -31,6 +31,7 @@ const HorseStore = () => {
   };
 
     return (
+    <div className="page-container">
     <div className="browser-window">
       <div className="browser-header">
         <span>Horse Store - Riding School Simulator</span>
@@ -48,13 +49,14 @@ const HorseStore = () => {
                   <h4>{horse.name}</h4>
                   <p><strong>Size:</strong> {horse.size}</p>
                   <p><strong>Character:</strong> {horse.character}</p>
-                  <button className="buy-button" onClick={() => buyHorse(horse)}>Buy {horse.price}</button>
+                  <button onClick={() => buyHorse(horse)}>Buy {horse.price}</button>
                 </div>
               ))}
             </div>
           )}
         </div>
       </div>
+    </div>
     </div>
   );
 };
